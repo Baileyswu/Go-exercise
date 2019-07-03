@@ -1,9 +1,14 @@
 package book
 
+import (
+	"fmt"
+	"encoding/json"
+	"strings"
+)
 type Book struct {
-	Title string
-	Author string
-	Pages int
+	Title string `json:title`
+	Author string `json:author`
+	Pages int `json:pages`
 }
 
 func (book Book) CategoryByLength() string {
@@ -12,4 +17,19 @@ func (book Book) CategoryByLength() string {
 	} else {
 		return "SHORT STORY"
 	}
+}
+
+func NewBookFromJSON(jsonStr string) (Book, error) {
+	var book Book
+	err := json.Unmarshal([]byte(jsonStr), &book)
+	if err != nil {
+		fmt.Println(err)
+	}
+	return book, err
+}
+
+func (book *Book) AuthorLastName() string {
+	slist := strings.Split(book.Author, " ")
+	slen := len(slist)
+	return slist[slen-1]
 }
