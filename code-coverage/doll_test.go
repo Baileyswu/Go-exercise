@@ -24,6 +24,7 @@ func TestSize(t *testing.T) {
 // https://blog.golang.org/cover
 // go test -cover
 // go test -coverprofile=coverage.out
-// go tool cover -func=coverage.out
 // go test -covermode=count -coverprofile=count.out
-// -covermode=set/count/atomic
+//         -covermode=set/count/atomic
+
+// go tool cover -func=coverage.out

@@ -1,3 +1,4 @@
+// ginkgo bootstrap
 package book_test
 
 import (
@@ -13,7 +14,7 @@ func TestBook(t *testing.T) {
 	RunSpecs(t, "Book Suite")
 }
 
-// You are only allowed to define BeforeSuite and AfterSuite once in a test suite 
+// You are only allowed to define BeforeSuite and AfterSuite once in a test suite
 var _ = BeforeSuite(func() {
 	fmt.Println("---Before Suite---")
 })
