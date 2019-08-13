@@ -31,6 +31,14 @@ func TestExample(t *testing.T) {
 /*
 
 go test -run Example -coverprofile=cover.out -coverpkg=./package1,./package2 -covermode=count
+go test -run Example -coverprofile=cover.out -coverpkg=./... -covermode=count
+
+go test -coverprofile=cover.out -coverpkg=./... -covermode=count -c -tags testexample
+./pkg-cc.test -test.run "^TestExample$" -test.coverprofile=cover.out
+
 go tool cover -html=cover.out
+
+go get -u github.com/t-yuki/gocover-cobertura
+gocover-cobertura < cover.out > ./cover.xml
 
 */

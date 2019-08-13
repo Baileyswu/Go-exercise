@@ -1,0 +1,13 @@
+mode: count
+local/Go-exercise/pkg-cc/package1/file1.go:3.20,5.2 1 33
+local/Go-exercise/pkg-cc/package1/file2.go:7.20,9.2 1 20
+local/Go-exercise/pkg-cc/package1/file2.go:12.24,14.2 1 6
+local/Go-exercise/pkg-cc/package2/file1.go:9.29,10.28 1 1
+local/Go-exercise/pkg-cc/package2/file1.go:10.28,11.14 1 100
+local/Go-exercise/pkg-cc/package2/file1.go:15.3,17.10 3 100
+local/Go-exercise/pkg-cc/package2/file1.go:11.14,13.4 1 0
+local/Go-exercise/pkg-cc/package2/file1.go:18.17,19.36 1 6
+local/Go-exercise/pkg-cc/package2/file1.go:20.11,21.32 1 27
+local/Go-exercise/pkg-cc/package2/file1.go:22.11,23.32 1 14
+local/Go-exercise/pkg-cc/package2/file1.go:24.11,25.18 1 53
+local/Go-exercise/pkg-cc/package2/file1.go:31.19,33.2 1 0
