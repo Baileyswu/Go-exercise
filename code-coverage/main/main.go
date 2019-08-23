@@ -38,10 +38,18 @@ func runMain() {
 	testMode = true
 	// run the main entry point
 	go main()
+	go countDown()
 	// watch for the stop channel
 	<-stop
 	// stop the graceful server
 	srv.Stop(5 * time.Second)
+}
+
+func countDown() {
+	if testMode == true {
+		time.Sleep(60 * time.Second)
+		stop <- true
+	}
 }
 
 // main - main entry point
