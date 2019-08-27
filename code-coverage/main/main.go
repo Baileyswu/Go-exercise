@@ -26,23 +26,29 @@ var (
 	// testMode is a bool that allows for deathpunch endpoint to exist or
 	// not exist... we don't want that running in production ;)
 	testMode bool = false
+	prFlag   bool = false
 )
 
 // runMain - entry-point to perform external testing of service, this is
 // where go test will enter main.  we have to setup test mode in here, as
 // well as the stop channel so we can stop the service
-func runMain() {
+func runMain(flagset flagSet) {
 	// start the stop channel
 	stop = make(chan bool)
 	// put the service in "testMode"
 	testMode = true
 	// run the main entry point
+	resetFlag(flagset)
 	go main()
 	go countDown()
 	// watch for the stop channel
 	<-stop
 	// stop the graceful server
 	srv.Stop(5 * time.Second)
+}
+
+func resetFlag(flagset flagSet) {
+	prFlag = flagset.prFlag
 }
 
 func countDown() {
@@ -80,6 +86,12 @@ func main() {
 			// end the graceful server if being run from RunMain()
 			stop <- true
 		})
+	}
+
+	if prFlag {
+		fmt.Println("sunny day")
+	} else {
+		fmt.Println("black day")
 	}
 
 	// add our router to negroni
