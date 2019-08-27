@@ -7,6 +7,7 @@ import (
 
 	"github.com/codegangsta/negroni"
 	"github.com/husobee/vestigo"
+	"github.com/spf13/pflag"
 	"github.com/tylerb/graceful"
 )
 
@@ -26,6 +27,7 @@ var (
 	// testMode is a bool that allows for deathpunch endpoint to exist or
 	// not exist... we don't want that running in production ;)
 	testMode bool = false
+	prFlag   *bool
 )
 
 // runMain - entry-point to perform external testing of service, this is
@@ -54,6 +56,7 @@ func countDown() {
 
 // main - main entry point
 func main() {
+	pflag.Parse()
 	// setup middlware stack
 	n := negroni.Classic()
 
@@ -80,6 +83,12 @@ func main() {
 			// end the graceful server if being run from RunMain()
 			stop <- true
 		})
+	}
+
+	if *prFlag {
+		fmt.Println("sunny day")
+	} else {
+		fmt.Println("black day")
 	}
 
 	// add our router to negroni
